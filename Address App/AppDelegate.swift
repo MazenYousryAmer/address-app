@@ -7,16 +7,51 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        GIDSignIn.sharedInstance().clientID = "749812256850-mv1vktsaudrogmaffogdmnkeqfnj49cc.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!)
+    {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        }
+        else
+        {
+            // Perform any operations on signed in user here.
+            userID = user.userID                  // For client-side use only!
+            userToken = user.authentication.idToken // Safe to send to the server
+            userName = user.profile.name
+            userMail = user.profile.email
+            
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        let alertView = UIAlertController(title: "error", message: "unknown error occured", preferredStyle: .alert)
+        let alertActionOk = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertView.addAction(alertActionOk)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
