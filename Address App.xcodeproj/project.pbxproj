@@ -13,6 +13,7 @@
 		5C79ECE42120A4DD00908F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C79ECE32120A4DD00908F5E /* Assets.xcassets */; };
 		5C79ECE72120A4DD00908F5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C79ECE52120A4DD00908F5E /* LaunchScreen.storyboard */; };
 		5CF6CB6D2120BEF0006D8730 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6CB6C2120BEF0006D8730 /* Globals.swift */; };
+		5CFE3265212248C3007DAC4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE3264212248C3007DAC4B /* MapViewController.swift */; };
 		733B201706C201451E66E1F2 /* Pods_Address_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C974D880A680C27250EA6D /* Pods_Address_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		5C79ECE62120A4DD00908F5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C79ECE82120A4DD00908F5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CF6CB6C2120BEF0006D8730 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		5CFE3264212248C3007DAC4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,15 +65,40 @@
 		5C79ECDB2120A4DD00908F5E /* Address App */ = {
 			isa = PBXGroup;
 			children = (
-				5C79ECDC2120A4DD00908F5E /* AppDelegate.swift */,
-				5C79ECDE2120A4DD00908F5E /* LoginViewController.swift */,
 				5C79ECE02120A4DD00908F5E /* Main.storyboard */,
+				5CFE326121224832007DAC4B /* 0 - App delegate */,
+				5CFE32622122487D007DAC4B /* 1 - Login View Controller */,
+				5CFE326321224897007DAC4B /* 2 - Home View Controller */,
 				5C79ECE32120A4DD00908F5E /* Assets.xcassets */,
 				5C79ECE52120A4DD00908F5E /* LaunchScreen.storyboard */,
 				5C79ECE82120A4DD00908F5E /* Info.plist */,
 				5CF6CB6C2120BEF0006D8730 /* Globals.swift */,
 			);
 			path = "Address App";
+			sourceTree = "<group>";
+		};
+		5CFE326121224832007DAC4B /* 0 - App delegate */ = {
+			isa = PBXGroup;
+			children = (
+				5C79ECDC2120A4DD00908F5E /* AppDelegate.swift */,
+			);
+			path = "0 - App delegate";
+			sourceTree = "<group>";
+		};
+		5CFE32622122487D007DAC4B /* 1 - Login View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5C79ECDE2120A4DD00908F5E /* LoginViewController.swift */,
+			);
+			path = "1 - Login View Controller";
+			sourceTree = "<group>";
+		};
+		5CFE326321224897007DAC4B /* 2 - Home View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5CFE3264212248C3007DAC4B /* MapViewController.swift */,
+			);
+			path = "2 - Home View Controller";
 			sourceTree = "<group>";
 		};
 		A13260A573E02DF8EAE6AA05 /* Pods */ = {
@@ -209,6 +236,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Address App/Pods-Address App-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -230,6 +259,7 @@
 				5C79ECDF2120A4DD00908F5E /* LoginViewController.swift in Sources */,
 				5C79ECDD2120A4DD00908F5E /* AppDelegate.swift in Sources */,
 				5CF6CB6D2120BEF0006D8730 /* Globals.swift in Sources */,
+				5CFE3265212248C3007DAC4B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

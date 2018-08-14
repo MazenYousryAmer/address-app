@@ -40,5 +40,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Yc0-7H-qnE">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="Cgz-6x-Ex5" customClass="MapViewController" customModule="Address_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Of-iB-7WM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgZ-4f-zIV" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hgZ-4f-zIV" secondAttribute="bottom" id="DEy-FL-r5a"/>
+                            <constraint firstItem="q6V-iA-dD1" firstAttribute="trailing" secondItem="hgZ-4f-zIV" secondAttribute="trailing" id="Fhf-PV-0YE"/>
+                            <constraint firstItem="hgZ-4f-zIV" firstAttribute="leading" secondItem="q6V-iA-dD1" secondAttribute="leading" id="xae-k5-ioh"/>
+                            <constraint firstItem="hgZ-4f-zIV" firstAttribute="top" secondItem="q6V-iA-dD1" secondAttribute="top" id="zBN-Y3-4Ty"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q6V-iA-dD1"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="hgZ-4f-zIV" id="9wr-YW-tP5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VVv-cH-JUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1473" y="100"/>
+        </scene>
     </scenes>
 </document>
