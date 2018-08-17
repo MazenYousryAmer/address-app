@@ -14,6 +14,12 @@
 		5C79ECE72120A4DD00908F5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C79ECE52120A4DD00908F5E /* LaunchScreen.storyboard */; };
 		5CF6CB6D2120BEF0006D8730 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6CB6C2120BEF0006D8730 /* Globals.swift */; };
 		5CFE3265212248C3007DAC4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE3264212248C3007DAC4B /* MapViewController.swift */; };
+		5CFE32682122F978007DAC4B /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE32672122F978007DAC4B /* Address.swift */; };
+		5CFE326B2124595D007DAC4B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE326A2124595D007DAC4B /* DetailsViewController.swift */; };
+		5CFE326D21258968007DAC4B /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE326C21258968007DAC4B /* DetailsTableViewCell.swift */; };
+		5CFE326F2126417F007DAC4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CFE326E2126417E007DAC4B /* GoogleService-Info.plist */; };
+		5CFE32722126EB77007DAC4B /* AddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE32712126EB77007DAC4B /* AddressData.swift */; };
+		5CFE32742126F6B6007DAC4B /* ShowLocationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE32732126F6B6007DAC4B /* ShowLocationProtocol.swift */; };
 		733B201706C201451E66E1F2 /* Pods_Address_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C974D880A680C27250EA6D /* Pods_Address_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +36,12 @@
 		5C79ECE82120A4DD00908F5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CF6CB6C2120BEF0006D8730 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5CFE3264212248C3007DAC4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5CFE32672122F978007DAC4B /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		5CFE326A2124595D007DAC4B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		5CFE326C21258968007DAC4B /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		5CFE326E2126417E007DAC4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5CFE32712126EB77007DAC4B /* AddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressData.swift; sourceTree = "<group>"; };
+		5CFE32732126F6B6007DAC4B /* ShowLocationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLocationProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +78,16 @@
 			isa = PBXGroup;
 			children = (
 				5C79ECE02120A4DD00908F5E /* Main.storyboard */,
+				5CFE32702126E9DD007DAC4B /* Interactor */,
+				5CFE32662122F953007DAC4B /* Models */,
 				5CFE326121224832007DAC4B /* 0 - App delegate */,
 				5CFE32622122487D007DAC4B /* 1 - Login View Controller */,
 				5CFE326321224897007DAC4B /* 2 - Home View Controller */,
+				5CFE32692124593C007DAC4B /* 3 - Details view controller */,
 				5C79ECE32120A4DD00908F5E /* Assets.xcassets */,
 				5C79ECE52120A4DD00908F5E /* LaunchScreen.storyboard */,
 				5C79ECE82120A4DD00908F5E /* Info.plist */,
+				5CFE326E2126417E007DAC4B /* GoogleService-Info.plist */,
 				5CF6CB6C2120BEF0006D8730 /* Globals.swift */,
 			);
 			path = "Address App";
@@ -99,6 +115,32 @@
 				5CFE3264212248C3007DAC4B /* MapViewController.swift */,
 			);
 			path = "2 - Home View Controller";
+			sourceTree = "<group>";
+		};
+		5CFE32662122F953007DAC4B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5CFE32672122F978007DAC4B /* Address.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5CFE32692124593C007DAC4B /* 3 - Details view controller */ = {
+			isa = PBXGroup;
+			children = (
+				5CFE326A2124595D007DAC4B /* DetailsViewController.swift */,
+				5CFE326C21258968007DAC4B /* DetailsTableViewCell.swift */,
+				5CFE32732126F6B6007DAC4B /* ShowLocationProtocol.swift */,
+			);
+			path = "3 - Details view controller";
+			sourceTree = "<group>";
+		};
+		5CFE32702126E9DD007DAC4B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5CFE32712126EB77007DAC4B /* AddressData.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		A13260A573E02DF8EAE6AA05 /* Pods */ = {
@@ -181,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C79ECE72120A4DD00908F5E /* LaunchScreen.storyboard in Resources */,
+				5CFE326F2126417F007DAC4B /* GoogleService-Info.plist in Resources */,
 				5C79ECE42120A4DD00908F5E /* Assets.xcassets in Resources */,
 				5C79ECE22120A4DD00908F5E /* Main.storyboard in Resources */,
 			);
@@ -260,6 +303,11 @@
 				5C79ECDD2120A4DD00908F5E /* AppDelegate.swift in Sources */,
 				5CF6CB6D2120BEF0006D8730 /* Globals.swift in Sources */,
 				5CFE3265212248C3007DAC4B /* MapViewController.swift in Sources */,
+				5CFE32742126F6B6007DAC4B /* ShowLocationProtocol.swift in Sources */,
+				5CFE32722126EB77007DAC4B /* AddressData.swift in Sources */,
+				5CFE32682122F978007DAC4B /* Address.swift in Sources */,
+				5CFE326B2124595D007DAC4B /* DetailsViewController.swift in Sources */,
+				5CFE326D21258968007DAC4B /* DetailsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

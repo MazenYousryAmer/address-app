@@ -11,4 +11,5 @@ target 'Address App' do
  pod 'Google/SignIn'
  pod 'GoogleMaps'
  pod 'GooglePlaces'
+ pod 'Firebase/Core'
 end

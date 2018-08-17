@@ -10,6 +10,8 @@ import UIKit
 import GoogleSignIn
 import GoogleMaps
 import GooglePlaces
+import FirebaseCore
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
@@ -24,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
         
         GMSServices.provideAPIKey("AIzaSyAkkYkqk4ikh7El2tPZlOV5SqDLESJhOp0")
         GMSPlacesClient.provideAPIKey("AIzaSyAkkYkqk4ikh7El2tPZlOV5SqDLESJhOp0")
+        
+        FIRApp.configure()
         
         return true
     }
@@ -88,6 +92,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+//    override init() {
+//        super.init()
+//        FIRApp.configure()
+//        // not really needed unless you really need it FIRDatabase.database().persistenceEnabled = true
+//    }
 
 
 }

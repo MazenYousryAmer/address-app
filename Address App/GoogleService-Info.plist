@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>749812256850-mv1vktsaudrogmaffogdmnkeqfnj49cc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.749812256850-mv1vktsaudrogmaffogdmnkeqfnj49cc</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDGr9UEBxA0C-ebalvg76Y9Pdl7sJWNaVw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>749812256850</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Mazen.Address-App</string>
+	<key>PROJECT_ID</key>
+	<string>address-app-1534098295312</string>
+	<key>STORAGE_BUCKET</key>
+	<string>address-app-1534098295312.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:749812256850:ios:4b6eb9768f669398</string>
+	<key>DATABASE_URL</key>
+	<string>https://address-app-1534098295312.firebaseio.com</string>
+</dict>
+</plist>
