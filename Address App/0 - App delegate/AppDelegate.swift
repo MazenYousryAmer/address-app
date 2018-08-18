@@ -27,7 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
         GMSServices.provideAPIKey("AIzaSyAkkYkqk4ikh7El2tPZlOV5SqDLESJhOp0")
         GMSPlacesClient.provideAPIKey("AIzaSyAkkYkqk4ikh7El2tPZlOV5SqDLESJhOp0")
         
+//        AIzaSyAeLyNlo2lK4YnDCZ-Fgj756PotbaQPA3w
+//        AIzaSyAXUwuKO9Or5The5DWoafctyu1GBs9uu9o
+        
         FIRApp.configure()
+        
+        if IsUserTokenExisting()
+        {
+            goToHomeScreen()
+        }
         
         return true
     }
@@ -51,6 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
             userToken = user.authentication.idToken // Safe to send to the server
             userName = user.profile.name
             userMail = user.profile.email
+            
+            saveUserToken(userToken: userToken)
             
             self.goToHomeScreen()
         }

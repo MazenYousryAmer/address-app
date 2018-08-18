@@ -10,5 +10,5 @@ import Foundation
 
 protocol showLocation
 {
-    func showPinWithLocation(lat : Double , long : Double)
+    func showPinWithLocation(lat : Double , long : Double , zoom : Float)
 }

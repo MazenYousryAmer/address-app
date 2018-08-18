@@ -57,7 +57,7 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pin = AddressData.sharedInstance.retreiveLocationFromIndex(index: indexPath.row)
         print("lat : \(pin.latitude) and long : \(pin.longitude)")
-        self.delegate.showPinWithLocation(lat: pin.latitude, long: pin.longitude)
+        self.delegate.showPinWithLocation(lat: pin.latitude, long: pin.longitude ,zoom: 12.0)
         self.navigationController?.popViewController(animated: true)
         // go to x,y on map
     }

@@ -8,8 +8,10 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
+import GooglePlacePicker
 
-class MapViewController: UIViewController , GMSMapViewDelegate{
+class MapViewController: UIViewController , GMSMapViewDelegate {
     
     // MARK: - iboutlet
     @IBOutlet var mapView : GMSMapView!
@@ -26,40 +28,26 @@ class MapViewController: UIViewController , GMSMapViewDelegate{
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-//        let camera = GMSCameraPosition.camera(withLatitude: 30.0, longitude: 30.0, zoom: 6.0)
-//        self.mapView = GMSMapView.map(withFrame: CGRect(x: 0.0, y: 0.0, width: self.mapView.frame.width, height: self.mapView.frame.height), camera: camera)
         self.mapView.delegate = self
         self.mapView.mapType = .normal
         mapView.settings.myLocationButton = true
-//        self.view.addSubview(<#T##view: UIView##UIView#>)
-        
-        //        let marker = GMSMarker()
-        //        marker.position = CLLocationCoordinate2D(latitude: 30.0, longitude: 30.0)
-        //        marker.title = "cairo"
-        //        marker.snippet = "masr"
-        //        marker.map = self.mapView
-        
-        
-        
+
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
-        // test data
-        let testAddress = Address(name: "test name test name test name test name", lat: 31.0, long: 30.0, desc: "test address description test address description test address description test address description test address description test address description")
-        
-        let testAddress2 = Address(name: "test name2", lat: 30.5, long: 30.5, desc: "test address description2")
-        
-        AddressData.sharedInstance.addLocation(address: testAddress)
-        AddressData.sharedInstance.addLocation(address: testAddress2)
+//        // test data
+//        let testAddress = Address(name: "test name test name test name test name", lat: 31.0, long: 30.0, desc: "test address description test address description test address description test address description test address description test address description")
+//        
+//        let testAddress2 = Address(name: "test name2", lat: 30.5, long: 30.5, desc: "test address description2")
+//        
+//        AddressData.sharedInstance.addLocation(address: testAddress)
+//        AddressData.sharedInstance.addLocation(address: testAddress2)
         
         self.refreshPins()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,10 +110,6 @@ class MapViewController: UIViewController , GMSMapViewDelegate{
         }
     }
     
-//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-//        reverseGeocodeCoordinate(position.target)
-//    }
-    
     //MARK: - actions
     @IBAction func saveBtnPressed()
     {
@@ -137,6 +121,41 @@ class MapViewController: UIViewController , GMSMapViewDelegate{
         AddressData.sharedInstance.addLocation(address: addressToBeSaved)
         self.refreshPins()
     }
+    
+    // The code snippet below shows how to create and display a GMSPlacePickerViewController.
+    @IBAction func pickPlaceBtnPressed() {
+        let config = GMSPlacePickerConfig(viewport: nil)
+        let placePicker = GMSPlacePickerViewController(config: config)
+        placePicker.delegate = self
+        present(placePicker, animated: true, completion: nil)
+    }
+    
+    // Present the Autocomplete view controller when the button is pressed.
+    @IBAction func autoCompleteBtnPressed() {
+        let autocompleteController = GMSAutocompleteViewController()
+        
+        let filter = GMSAutocompleteFilter()
+        filter.country = "EG"
+        autocompleteController.autocompleteFilter = filter
+        
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
+    }
+    
+    @IBAction func editBtnPressed()
+    {
+        self.performSegue(withIdentifier: "DetailsViewController", sender: nil)
+    }
+    
+    @IBAction func logoutBtnPressed()
+    {
+        deleteUserToken()
+        
+        let loginVC = self.storyboard?.instantiateInitialViewController()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginVC
+    }
+
     
      // MARK: - Navigation
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -154,6 +173,7 @@ class MapViewController: UIViewController , GMSMapViewDelegate{
     
 }
 
+//MARK: - location delegate
 extension MapViewController : CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -183,10 +203,73 @@ extension MapViewController : CLLocationManagerDelegate
     }
 }
 
+//MARK: - map location delegate
 extension MapViewController : showLocation
 {
-    func showPinWithLocation(lat: Double, long: Double) {
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 12.0)
+    func showPinWithLocation(lat : Double , long : Double , zoom : Float) {
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: zoom)
         self.mapView.camera = camera
     }
+}
+
+//MARK: - places delegate
+extension MapViewController : GMSPlacePickerViewControllerDelegate
+{
+    
+    // To receive the results from the place picker 'self' will need to conform to
+    // GMSPlacePickerViewControllerDelegate and implement this code.
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        // Dismiss the place picker, as it cannot dismiss itself.
+        viewController.dismiss(animated: true, completion: nil)
+        
+        print("Place name \(place.name)")
+        print("Place address \(String(describing: place.formattedAddress))")
+        print("Place attributions \(String(describing: place.attributions))")
+        self.showPinWithLocation(lat: place.coordinate.latitude, long: place.coordinate.longitude, zoom: 12.0)
+    }
+    
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        // Dismiss the place picker, as it cannot dismiss itself.
+        viewController.dismiss(animated: true, completion: nil)
+        
+        print("No place selected")
+    }
+}
+
+//MARK: - auto complete delegate
+extension MapViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        for addresComponent in place.addressComponents!
+        {
+            print(addresComponent)
+        }
+        print("Place name: \(place.name)")
+        print("Place address: \(String(describing: place.formattedAddress))")
+        print("Place attributions: \(String(describing: place.attributions))")
+        print("place cordinates: \(place.coordinate)")
+        self.showPinWithLocation(lat: place.coordinate.latitude, long: place.coordinate.longitude , zoom: 18.0)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // error handeling
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
 }

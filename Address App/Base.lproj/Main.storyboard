@@ -39,6 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="497" y="99"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Yc0-7H-qnE">
@@ -49,38 +50,77 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgZ-4f-zIV" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oc3-Ci-np6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQM-FX-RFH">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="40"/>
+                                        <state key="normal" title="pick">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pickPlaceBtnPressed" destination="Cgz-6x-Ex5" eventType="touchUpInside" id="jgU-XN-bTf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsR-9U-x6O">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="40"/>
+                                        <state key="normal" title="search">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="autoCompleteBtnPressed" destination="Cgz-6x-Ex5" eventType="touchUpInside" id="CdW-rQ-apb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXe-mw-3C3">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="40"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editBtnPressed" destination="Cgz-6x-Ex5" eventType="touchUpInside" id="RAC-eH-JOD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aWc-g7-XhR"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hgZ-4f-zIV" secondAttribute="bottom" id="DEy-FL-r5a"/>
+                            <constraint firstItem="oc3-Ci-np6" firstAttribute="top" secondItem="q6V-iA-dD1" secondAttribute="top" id="1hd-ok-hee"/>
+                            <constraint firstItem="q6V-iA-dD1" firstAttribute="trailing" secondItem="oc3-Ci-np6" secondAttribute="trailing" id="99e-zB-EGT"/>
                             <constraint firstItem="q6V-iA-dD1" firstAttribute="trailing" secondItem="hgZ-4f-zIV" secondAttribute="trailing" id="Fhf-PV-0YE"/>
+                            <constraint firstAttribute="bottom" secondItem="hgZ-4f-zIV" secondAttribute="bottom" id="PsT-u7-h3s"/>
+                            <constraint firstItem="hgZ-4f-zIV" firstAttribute="top" secondItem="oc3-Ci-np6" secondAttribute="bottom" id="a5C-Js-ytu"/>
+                            <constraint firstItem="oc3-Ci-np6" firstAttribute="leading" secondItem="q6V-iA-dD1" secondAttribute="leading" id="gp8-XH-hH4"/>
                             <constraint firstItem="hgZ-4f-zIV" firstAttribute="leading" secondItem="q6V-iA-dD1" secondAttribute="leading" id="xae-k5-ioh"/>
-                            <constraint firstItem="hgZ-4f-zIV" firstAttribute="top" secondItem="q6V-iA-dD1" secondAttribute="top" id="zBN-Y3-4Ty"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q6V-iA-dD1"/>
                     </view>
                     <navigationItem key="navigationItem" id="vYR-FI-oG1">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="5vj-z2-JzM">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="5vj-z2-JzM">
                             <connections>
-                                <segue destination="CDD-az-CDM" kind="push" identifier="DetailsViewController" id="fqN-Xf-4GM"/>
+                                <action selector="logoutBtnPressed" destination="Cgz-6x-Ex5" id="ovH-op-O7f"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="qr7-8L-Ofj">
                             <connections>
-                                <action selector="saveBtnPressed" destination="Cgz-6x-Ex5" id="jVP-iL-ywn"/>
+                                <action selector="saveBtnPressed" destination="Cgz-6x-Ex5" id="XZ6-hT-gf2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="hgZ-4f-zIV" id="9wr-YW-tP5"/>
+                        <segue destination="CDD-az-CDM" kind="show" identifier="DetailsViewController" id="Ng2-MI-oyn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVv-cH-JUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2246" y="99"/>
+            <point key="canvasLocation" x="2245.5999999999999" y="98.50074962518741"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="feB-5d-Lcs">
